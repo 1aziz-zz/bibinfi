@@ -9,10 +9,8 @@ import javax.persistence.*
 @Entity
 class Book(
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
-        @JsonIgnore
         val id: Int,
         var title: String,
-        @JsonIgnore
         var isbn: String,
         @ElementCollection
         var authors: MutableList<String>,

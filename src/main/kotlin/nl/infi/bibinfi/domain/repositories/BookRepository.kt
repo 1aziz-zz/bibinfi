@@ -1,4 +1,5 @@
 package nl.infi.bibinfi.domain.repositories
+
 import nl.infi.bibinfi.domain.Book
 import org.springframework.data.repository.CrudRepository
 
@@ -7,5 +8,5 @@ import org.springframework.data.repository.CrudRepository
  */
 
 interface BookRepository : CrudRepository<Book, Int> {
-    fun findById(id: String): Book
+    fun findByIsbnContaining(isbn: String): Book?
 }

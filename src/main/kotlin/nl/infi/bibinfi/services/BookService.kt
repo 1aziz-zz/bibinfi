@@ -6,6 +6,7 @@ import nl.infi.bibinfi.services.api.OpenLibraryService
 import nl.infi.bibinfi.services.generics.Repository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 /**
  * Created by aziz on 12/22/2017.
@@ -14,7 +15,13 @@ import org.springframework.stereotype.Service
 class BookService : Repository<Book, BookRepository>() {
     @Autowired
     private lateinit var openLibraryService: OpenLibraryService
-    fun retrieveBookInfo(isbn : String) : Book {
+
+    fun retrieveBookInfo(isbn: String): Book? {
         return openLibraryService.getExternalBook(isbn)
     }
+
+    fun findBookByIsbn(isbn: String): Book? {
+        return this.repo.findByIsbnContaining(isbn)
+    }
+
 }

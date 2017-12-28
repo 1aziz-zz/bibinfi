@@ -17,25 +17,12 @@ import org.springframework.context.annotation.ComponentScan
 @SpringBootApplication(exclude = arrayOf(SecurityAutoConfiguration::class))
 @ComponentScan("nl.infi.bibinfi")
 class Application {
-
+/*
     @Bean
-    fun init(bookRepo: BookRepository, userRepo: UserRepository) = CommandLineRunner {
-        bookRepo.save(Book(1, "Best book ever!", "123456789", arrayListOf("Aziz", "Peter"), 1957, ""))
-        val myBook = Book()
-        myBook.title = "WOW"
-        bookRepo.save(myBook)
-        bookRepo.save(Book(1, "Best book ever!", "123456789", arrayListOf("Aziz", "Peter"), 1957, ""))
-
-        val personA = User()
-        personA.book = myBook
-        personA.name = "Aziz"
-        userRepo.save(personA)
-
-        val personB = User(id = 1, name = "Peter", book = bookRepo.findById(1).get(), url = "azizo.me")
-
-        userRepo.save(personB)
-
+    fun init() = CommandLineRunner {
+       ???
     }
+*/
 
 }
 

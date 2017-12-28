@@ -7,6 +7,6 @@ import java.net.URL
  * Created by aziz on 12/22/2017.
  */
 interface APIService {
-    fun getExternalBook(isbn: String): Book
-    fun getApiRequest(isbn: String): URL
+    fun getExternalBook(isbn: String): Book?
+    fun getApiRequest(isbn: String): URL?
 }
