@@ -7,11 +7,16 @@ buildscript {
 		mavenCentral()
 		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
+		maven { url "https://plugins.gradle.org/m2/" }
+
+
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+		classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+
 	}
 }
 
@@ -21,6 +26,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.moowork.node'
 
 group = 'nl.infi'
 version = '0.0.1-SNAPSHOT'
@@ -48,5 +54,11 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+
+// https://mvnrepository.com/artifact/com.github.eirslett/frontend-maven-plugin
+	compile group: 'com.github.eirslett', name: 'frontend-maven-plugin', version: '1.6'
+
 /*	testCompile('org.springframework.security:spring-security-test')*/
 }
