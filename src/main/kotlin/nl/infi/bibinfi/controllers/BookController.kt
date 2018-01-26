@@ -1,5 +1,6 @@
 package nl.infi.bibinfi.controllers
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.mysql.jdbc.IterateBlock
 import nl.infi.bibinfi.domain.Book
 import nl.infi.bibinfi.services.BookService
@@ -14,10 +15,11 @@ import java.util.*
  */
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("books")
 
 class BookController(var bookService: BookService) {
     @GetMapping
+    @CrossOrigin
     fun findAll(): ResponseEntity<Iterable<Book>> {
         return ResponseEntity<Iterable<Book>>(bookService.getAll(), HttpStatus.OK)
     }
@@ -43,8 +45,23 @@ class BookController(var bookService: BookService) {
         return ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
-    // Add one of multiple books
+   /* // Add one book
     @PostMapping("/add")
+    @CrossOrigin
+
+    fun addBook(@RequestParam("isbn") isbn: String): ResponseEntity<HttpStatus> {
+
+            val book = bookService.findBookByIsbn(isbn)
+            if (book === null) {
+                bookService.add(bookService.retrieveBookInfo(isbn)!!)
+                return ResponseEntity(HttpStatus.OK)
+            }
+
+        return ResponseEntity(HttpStatus.NOT_ACCEPTABLE)*/
+
+ //   Method to add multiple ISBN:
+ @PostMapping("/add")
+ @CrossOrigin
     fun addMultipleBooks(@RequestBody isbnList: List<String>): ResponseEntity<HttpStatus> {
 
         for (isbn in isbnList) {

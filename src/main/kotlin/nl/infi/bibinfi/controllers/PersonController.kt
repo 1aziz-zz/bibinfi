@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
  * Created by aziz on 12/15/2017.
  */
 @RestController
-@RequestMapping("/users")
+@RequestMapping("users")
 class PersonController(val userService: UserService) {
     @GetMapping
 
@@ -19,5 +19,4 @@ class PersonController(val userService: UserService) {
     @GetMapping("{id}")
     fun findById(@PathVariable id:Int) =
             userService.get(id)
-
 }
